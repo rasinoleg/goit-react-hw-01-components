@@ -1,20 +1,6 @@
 import css from './Statistics.module.css';
 import propTypes from 'prop-types';
-
-const createColor = () => {
-  const color =
-    'rgba(' +
-    Math.round(Math.random() * 255) +
-    ',' +
-    Math.round(Math.random() * 255) +
-    ',' +
-    Math.round(Math.random() * 255) +
-    ',' +
-    0.5 +
-    ')';
-
-  return color;
-};
+import { createColor } from 'helpers/helpers';
 
 export const Statistics = ({ title, stats }) => {
   return (
@@ -40,8 +26,10 @@ export const Statistics = ({ title, stats }) => {
 };
 
 Statistics.propTypes = {
-  label: propTypes.string.isRequired,
-  percentage: propTypes.number.isRequired,
+  stats: propTypes.arrayOf(
+    propTypes.shape({
+      label: propTypes.string.isRequired,
+      percentage: propTypes.number.isRequired,
+    })
+  ).isRequired,
 };
-
-  
